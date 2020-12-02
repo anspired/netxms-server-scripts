@@ -1,0 +1,4 @@
+# You should copy this to $HOME/.netxms-env
+export NETXMS_USERNAME=
+export NETXMS_PASSWORD=
+export NETXMS_HOSTNAME=127.0.0.1

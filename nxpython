@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR="$( cd "$(dirname "$(readlink -f $0)")" && pwd )"
+
+[[ -f ~/.netxms-env ]] && source ~/.netxms-env
+
+cd "$SCRIPT_DIR"
+exec java \
+    -Dnetxms.server="${NETXMS_HOSTNAME}" \
+    -Dnetxms.login="${NETXMS_USERNAME}" \
+    -Dnetxms.password="${NETXMS_PASSWORD}" \
+    -jar nxshell-3.6.252.jar \
+    "$@"
+
