@@ -1,2 +1,6 @@
-
+data/*
+archive/*
 *py.class
+*.swp
+.*
+*.jar

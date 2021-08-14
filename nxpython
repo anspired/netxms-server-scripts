@@ -3,12 +3,14 @@
 SCRIPT_DIR="$( cd "$(dirname "$(readlink -f $0)")" && pwd )"
 
 [[ -f ~/.netxms-env ]] && source ~/.netxms-env
+[[ -f /etc/netxms-env ]] && source /etc/netxms-env &> /dev/null
 
 cd "$SCRIPT_DIR"
 exec java \
     -Dnetxms.server="${NETXMS_HOSTNAME}" \
     -Dnetxms.login="${NETXMS_USERNAME}" \
+    -Dpython.path="${SCRIPT_DIR}/include" \
     -Dnetxms.password="${NETXMS_PASSWORD}" \
-    -jar nxshell-3.6.252.jar \
+    -jar "${NXSHELL_JAR:-nxshell-3.8.382.jar}" \
     "$@"
 

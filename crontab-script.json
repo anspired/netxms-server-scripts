@@ -1,0 +1,27 @@
+[
+    {
+        "enabled": true,
+        "filename": "scripts/cleanup-ips-subnets.py",
+        "more": "Cleans up any empty subnets"
+    },
+    {
+        "enabled": true,
+        "filename": "scripts/identify-nodes.py",
+        "more": "Identifies nodes based on their attributes"
+    },
+    {
+        "enabled": true,
+        "filename": "scripts/reorder-objects.py",
+        "more": "Re-orders all objects under Infrastructure Container"
+    },
+    {
+        "enabled": true,
+        "filename": "scripts/reapply-acls.py",
+        "more": "Applies ACLs to all containers"
+    },
+    {
+        "enabled": true,
+        "filename": "scripts/dynamic-hosts.py",
+        "more": "Update primaryHostName based on customAttributes"
+    }
+]

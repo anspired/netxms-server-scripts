@@ -1,9 +1,11 @@
 import os
 import sys
+
+import org.netxms.client.objects as objects
 from java.util import HashMap
 from java.lang import Long
 from org.netxms.client.users import User, UserGroup
-from org.netxms.client import NXCObjectModificationData
+from org.netxms.client import NXCObjectModificationData, NXCObjectCreationData
 from org.netxms.client.objects.configs import CustomAttribute
 
 
@@ -20,9 +22,15 @@ def create_container(session, container_name):
         objects.GenericObject.SERVICEROOT
     ))
 
-def set_custom_attribute(session, object, attr, value, inheret=False):
-    md = NXCObjectModificationData(object.getObjectId())
-    attr_map = HashMap(object.customAttributes)
+def set_custom_attribute(session, obj, attr, value, inheret=False):
+    if isinstance(obj, (long, int)):
+        object_id = obj
+        obj = session.findObjectById(object_id)
+    else:
+        object_id = obj.getObjectId()
+
+    md = NXCObjectModificationData(object_id)
+    attr_map = HashMap(obj.getCustomAttributes())
     flags = 0
     if inheret:
         flags = CustomAttribute.INHERITABLE
